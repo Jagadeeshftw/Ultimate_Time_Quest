@@ -1,30 +1,29 @@
 @import "bootstrap/scss/bootstrap";
 
 .syne-mono-regular {
-    font-family: "Syne Mono", monospace;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  .style-green {
-    background: linear-gradient(to right, #26619C, white);
-    background-position: center;
-  
-  
-  }
-  
-  .green {
-    background: linear-gradient(to right, #26619C, white);
-    background-clip: text;
-    -webkit-background-clip: text;
-    /* For older versions of Safari */
-    color: transparent;
-    /* Hide original text */
-  }
-  
-  
-  .freeman-regular {
-    font-family: "Freeman", sans-serif;
-    font-weight: 200;
-    font-style: normal;
-  }
+  font-family: "Syne Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.style-green {
+  background: linear-gradient(to right, #26619c, white);
+  background-position: center;
+}
+.blue {
+  color: #26619c;
+}
+.green {
+  background: linear-gradient(to right, #26619c, white);
+  background-clip: text;
+  -webkit-background-clip: text;
+  /* For older versions of Safari */
+  color: transparent;
+  /* Hide original text */
+}
+
+.freeman-regular {
+  font-family: "Freeman", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
