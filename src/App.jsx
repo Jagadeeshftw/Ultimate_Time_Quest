@@ -1,14 +1,13 @@
-import ChallengeBox from "../components/ChallengeBox"
-import Header from "../components/Header"
+import ChallengeBox from "../components/ChallengeBox";
+import Header from "../components/Header";
 
 function App() {
-
   return (
     <>
       <Header />
-      <ChallengeBox/>
+      <ChallengeBox />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
