@@ -1,9 +1,20 @@
-import { forwardRef } from "react";
+import { forwardRef, useImperativeHandle, useRef } from "react";
+import { Modal } from "bootstrap";
 const ShowModal = forwardRef(({ timing }, ref) => {
+  const modalRef = useRef();
+
+  useImperativeHandle(ref, () => {
+    return {
+      open() {
+        const modal = new Modal(modalRef.current);
+        modal.show();
+      },
+    };
+  });
   return (
     <div
       className="modal fade"
-      ref={ref}
+      ref={modalRef}
       tabIndex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"

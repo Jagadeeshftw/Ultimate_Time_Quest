@@ -5,16 +5,16 @@ const ChallengeBox = () => {
     <div className="container">
       <div className="row justify-content-center align-content-center">
         <div class="col-sm-3">
-          <ChallengeCard level="BEGINNER" timing="1" />
+          <ChallengeCard level="BEGINNER" totalTime="1" />
         </div>
         <div className="col-sm-3">
-          <ChallengeCard level="EASY" timing="30" />
+          <ChallengeCard level="EASY" totalTime="30" />
         </div>
         <div className="col-sm-3">
-          <ChallengeCard level="MEDIUM" timing="60" />
+          <ChallengeCard level="MEDIUM" totalTime="60" />
         </div>
         <div className="col-sm-3">
-          <ChallengeCard level="HARD" timing="120" />
+          <ChallengeCard level="HARD" totalTime="120" />
         </div>
       </div>
     </div>

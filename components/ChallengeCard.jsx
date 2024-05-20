@@ -1,29 +1,30 @@
 import "../src/index.scss";
-import { useState, useRef, useEffect } from "react";
-import { Modal } from "bootstrap";
+import { useState, useRef } from "react";
 import ShowModal from "./ShowModal";
-const ChallengeCard = ({ level, timing }) => {
+const ChallengeCard = ({ level, totalTime }) => {
   const modalRef = useRef(null);
   const timer = useRef();
-  const [timeExpired, setTimeExpired] = useState(false);
-  const [timeStarted, setTimeStarted] = useState(false);
+  const [remainingTime, setRemainingTime] = useState(totalTime * 1000);
+  const isActive = remainingTime > 0 && remainingTime < totalTime * 1000;
+
+  if (remainingTime <= 0) {
+    clearInterval(timer.current);
+    setRemainingTime(totalTime * 1000);
+    modalRef.current.open();
+  }
   const handleStart = () => {
-    timer.current = setTimeout(() => {
-      setTimeExpired(true);
-      const modal = new Modal(modalRef.current);
-      modal.show();
-      setTimeExpired(false);
-      setTimeStarted(false);
-    }, 1000 * timing);
-    setTimeStarted(true);
+    timer.current = setInterval(() => {
+      setRemainingTime((prevTime) => prevTime - 10);
+    }, 10);
   };
   const handleStop = () => {
-    clearTimeout(timer.current);
-    setTimeStarted(false);
+    clearInterval(timer.current);
+    setRemainingTime(totalTime * 1000);
+    modalRef.current.open();
   };
   return (
     <>
-      <ShowModal ref={modalRef} timing={timing} />
+      <ShowModal ref={modalRef} totalTime={totalTime} />
       <div
         className="card mb-3 bg-dark"
         style={{ width: "16rem", backgroundColor: "#26619c" }}
@@ -31,18 +32,18 @@ const ChallengeCard = ({ level, timing }) => {
         <div className="card-body d-flex flex-column align-items-center justify-content-center">
           <h5 className="card-title text-center green mb-2">{level}</h5>
           <div className="card-header bg-secondary text-dark mb-2 rounded">
-            {timing} second{timing > 1 ? "s" : " "}
+            {totalTime} second{totalTime > 1 ? "s" : " "}
           </div>
           <h5 className="card-title text-center green mb-2"> </h5>
           <a
             href="#"
             className="btn btn-outline-secondary align-center  mb-2"
-            onClick={timeStarted ? handleStop : handleStart}
+            onClick={isActive ? handleStop : handleStart}
           >
-            {timeStarted ? "Stop" : "Start"} Challenge
+            {isActive ? "Stop" : "Start"} Challenge
           </a>
           <p className="card-text green mb-2 text-center">
-            {timeStarted ? "Time is running..." : "Timer inactive"}
+            {isActive ? "Time is running..." : "Timer inactive"}
           </p>
         </div>
       </div>
