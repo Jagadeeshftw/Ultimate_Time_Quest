@@ -10,7 +10,7 @@ const Header = () => {
   };
   return (
     <header>
-      <div className="container bg-dark my-5 py-3 rounded-5 h-25 w-75">
+      <div className="container bg-dark my-3 py-3 rounded-5 h-25 w-75">
         <div className="row align-content-center justify-content-center">
           <div className="col">
             <h1 className="display-5 syne-mono-regular text-center text-white">

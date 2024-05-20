@@ -4,19 +4,26 @@ import { Modal } from "bootstrap";
 
 const ChallengeCard = ({ level, timing }) => {
   const modalRef = useRef(null);
+  const timer = useRef();
   const [timeExpired, setTimeExpired] = useState(false);
   const [timeStarted, setTimeStarted] = useState(false);
   useEffect(() => {
     if (timeExpired) {
       const modal = new Modal(modalRef.current);
       modal.show();
+      setTimeExpired(false);
+      setTimeStarted(false);
     }
   }, [timeExpired]);
   const handleStart = () => {
-    setTimeout(() => {
+    timer.current = setTimeout(() => {
       setTimeExpired(true);
     }, 1000 * timing);
     setTimeStarted(true);
+  };
+  const handleStop = () => {
+    clearTimeout(timer.current);
+    setTimeStarted(false);
   };
   return (
     <>
@@ -29,14 +36,11 @@ const ChallengeCard = ({ level, timing }) => {
           <div className="card-header bg-secondary text-dark mb-2 rounded">
             {timing} second{timing > 1 ? "s" : " "}
           </div>
-          <h5 className="card-title text-center green mb-2">
-            {" "}
-            {timeExpired ? "You Lost" : ""}
-          </h5>
+          <h5 className="card-title text-center green mb-2"> </h5>
           <a
             href="#"
             className="btn btn-outline-secondary align-center  mb-2"
-            onClick={handleStart}
+            onClick={timeStarted ? handleStop : handleStart}
           >
             {timeStarted ? "Stop" : "Start"} Challenge
           </a>
@@ -60,7 +64,7 @@ const ChallengeCard = ({ level, timing }) => {
           >
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
-                Modal title
+                You Lost
               </h5>
               <button
                 type="button"
@@ -69,7 +73,14 @@ const ChallengeCard = ({ level, timing }) => {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">Hey you Won</div>
+            <div className="modal-body">
+              <p>
+                The Target Time was <strong>{timing}</strong> second
+                {timing > 1 ? "s" : ""}{" "}
+              </p>
+
+              <p>You stopped the timer with X seconds left</p>
+            </div>
             <div className="modal-footer">
               <button
                 type="button"
