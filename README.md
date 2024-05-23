@@ -66,13 +66,13 @@ Ensure you have the following installed on your local machine:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/ultimate-time-quest.git
+    git clone https://github.com/Jagadeeshftw/Ultimate_Time_Quest.git
     ```
 
 2. **Navigate to the project directory:**
 
     ```bash
-    cd ultimate-time-quest
+    cd Ultimate_Time_Quest
     ```
 
 3. **Install dependencies:**
@@ -86,14 +86,14 @@ Ensure you have the following installed on your local machine:
 4. **Start the development server:**
 
     ```bash
-    npm start
+    npm run dev
     ```
 
-    This will start the application on `http://localhost:3000`.
+    This will start the application on `http://localhost:5173`.
 
 5. **Open the application in your browser:**
 
-    Navigate to `http://localhost:3000` to see the application running.
+    Navigate to `http://localhost:5173` to see the application running.
 
 ### Building for Production
 
