@@ -1,10 +1,9 @@
 import { useState, useRef } from "react";
 const Header = () => {
   const playerName = useRef();
-  const [getName, setName] = useState("Time Traveller");
+  const [getName, setName] = useState("Timekeeper");
 
   const handleClick = () => {
-    console.log("hello");
     setName(playerName.current.value);
     playerName.current.value = "";
   };
